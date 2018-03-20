@@ -2,21 +2,21 @@ Android 中集成  SDK
 ============
  
 ## 快速体验
-导入ean-pay-an-sdk整个项目，做如下修改，即可运行该demo。 
+导入ean-pay-an-sdk-open整个项目，做如下修改，即可运行该demo。 
 
-修改ClientSDKActivity类中参数YOUR_URL为自己支付服务器端charge生成接口
+修改ClientSDKActivity类中参数YOUR_URL为自己支付服务器端charge生成接口（具体详见服务端开发文档）。
 
-例如：YOUR_URL = "http://192.168.1.10710:8088/payment/api_payment";
+例如：YOUR_URL = "http://192.168.1.100:8088/payment/api_payment";
 
 <font color="red">需要注意: </font>确保服务器端获取charge接口畅通。
 
 ## 开始接入
 ### 步骤1：添加相应的依赖到项目中
-#### 使用gradle依赖，将xpay_sdk-release.aar文件复制到libs目录，增加build.gradle内容。
+#### 使用gradle依赖，将xpay_sdk.aar文件复制到libs目录，增加build.gradle内容。
 
 ``` groovy
 dependencies {
-    compile(name: 'xpay_sdk-debug', ext: 'aar')
+    compile(name: 'xpay_sdk', ext: 'aar')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     provided files('libs/org.simalliance.openmobileapi.jar')
 }
@@ -35,7 +35,7 @@ dependencies {
 ```
     
 ### 步骤3：在清单文件中注册相应的组件
--  SDK所需要注册
+-  SDK所需要注册组件
 
 ``` xml
         <activity
@@ -66,8 +66,6 @@ charge 对象是一个包含支付信息的 JSON 对象，是  SDK 发起支付�
 //参数二：data  获取到的charge或order的JSON字符串
 XPay.createPayment(YourActivity.this, data);
 ```
-
-- QQ钱包调用方式(<font color='red'>注：调起支付时，需要签名打包成apk</font>)
 
 
 ### 步骤5：获取支付结果

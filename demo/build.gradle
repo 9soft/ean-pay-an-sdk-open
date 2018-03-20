@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.xpay.demoapp"
-        minSdkVersion 11
+        minSdkVersion 18
         targetSdkVersion 25
     }
 
@@ -30,7 +30,7 @@ repositories {
     }
 }
 dependencies {
-    compile(name: 'xpay_sdk-release', ext: 'aar')
+    compile(name: 'xpay_sdk', ext: 'aar')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     provided files('libs/org.simalliance.openmobileapi.jar')
 }
